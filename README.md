@@ -58,6 +58,32 @@ Args:
 * `--timeout <duration>` : Timeout for this command. _Optional_. (default: `20m`).
 * `--interval <duration>` : Interval at which to print keep-alive messages. _Optional_. (default: `1m`).
 
+To use travis-wait-enhanced in your `.travis.yml` add :
+
+```yml
+before_install:
+  # linux
+  - curl -sL https://raw.githubusercontent.com/crazy-max/travis-wait-enhanced/master/.travis/linux.sh | head -n -2 | bash
+  # windows
+  - curl -sL https://raw.githubusercontent.com/crazy-max/travis-wait-enhanced/master/.travis/windows.sh | head -n -2 | bash
+```
+
+or
+
+```yml
+before_install:
+  # linux
+  - |
+    wget -qO- "https://github.com/crazy-max/travis-wait-enhanced/releases/download/v0.1.1/travis-wait-enhanced_0.1.1_linux_x86_64.tar.gz" | tar -zxvf - travis-wait-enhanced
+    mv travis-wait-enhanced /home/travis/bin/
+    travis-wait-enhanced --version
+  # windows
+  - |
+    curl -LfsS -o /tmp/travis-wait-enhanced.zip "https://github.com/crazy-max/travis-wait-enhanced/releases/download/v0.1.1/travis-wait-enhanced_0.1.1_windows_x86_64.zip"
+    7z x /tmp/travis-wait-enhanced.zip -y -o/usr/bin/ travis-wait-enhanced.exe -r
+    travis-wait-enhanced --version
+```
+
 ## How can I help ?
 
 All kinds of contributions are welcome :raised_hands:!<br />
