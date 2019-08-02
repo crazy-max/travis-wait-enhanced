@@ -1,3 +1,4 @@
+project_name: travis_wait_enhanced
 before:
   hooks:
     - go mod download
@@ -28,10 +29,15 @@ builds:
         goarch: arm64
 archives:
   -
-    name_template: "{{ .Binary }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
-    wrap_in_directory: true
-    format: binary
+    replacements:
+      386: i386
+      amd64: x86_64
+    format_overrides:
+      - goos: windows
+        format: zip
     files:
-      - none*
+      - LICENSE
+      - README.md
+      - CHANGELOG.md
 checksum:
   name_template: 'checksums.txt'
