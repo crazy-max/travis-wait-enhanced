@@ -26,7 +26,7 @@ func main() {
 	kingpin.Flag("interval", "Interval at which to print keep-alive messages.").Default("1m").DurationVar(&interval)
 	kingpin.Arg("command", "Command to execute.").Required().StringsVar(&fullcmd)
 	kingpin.UsageTemplate(kingpin.CompactUsageTemplate).Version(version).Author("CrazyMax")
-	kingpin.CommandLine.Name = "travis_wait_enhanced"
+	kingpin.CommandLine.Name = "travis-wait-enhanced"
 	kingpin.CommandLine.Help = `Prevent Travis CI from thinking a long-running process has stalled. More info: https://github.com/crazy-max/travis-wait-enhanced`
 	kingpin.Parse()
 

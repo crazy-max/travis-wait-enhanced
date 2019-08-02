@@ -33,7 +33,7 @@ After getting the binary, it can be tested with `./travis-wait-enhanced --help` 
 
 ```
 $ ./travis-wait-enhanced --help
-usage: travis_wait_enhanced [<flags>] <command>...
+usage: travis-wait-enhanced [<flags>] <command>...
 
 Prevent Travis CI from thinking a long-running process has stalled. More info:
 https://github.com/crazy-max/travis-wait-enhanced
