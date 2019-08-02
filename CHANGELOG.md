@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1 (2019/08/02)
+
+* Fix `<nil>` in log output
+
 ## 0.1.0 (2019/08/02)
 
 * Initial version

@@ -31,10 +31,13 @@ func main() {
 	kingpin.Parse()
 
 	// Logger
-	log.Logger = zerolog.New(zerolog.ConsoleWriter{
-		Out:        os.Stdout,
-		TimeFormat: time.RFC1123,
-	}).With().Logger()
+	output := zerolog.ConsoleWriter{
+		Out: os.Stdout,
+	}
+	output.FormatTimestamp = func(i interface{}) string {
+		return kingpin.CommandLine.Name
+	}
+	log.Logger = zerolog.New(output).With().Timestamp().Logger()
 	zerolog.SetGlobalLevel(zerolog.InfoLevel)
 
 	// Handle os signals
