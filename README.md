@@ -26,7 +26,7 @@ Choose the archive matching the destination platform and extract travis-wait-enh
 
 ```
 $ cd /opt
-$ wget -qO- https://github.com/crazy-max/travis-wait-enhanced/releases/download/v0.1.0/travis-wait-enhanced_0.1.0_linux_x86_64.tar.gz | tar -zxvf - travis-wait-enhanced
+$ wget -qO- https://github.com/crazy-max/travis-wait-enhanced/releases/download/v0.1.1/travis-wait-enhanced_0.1.1_linux_x86_64.tar.gz | tar -zxvf - travis-wait-enhanced
 ```
 
 After getting the binary, it can be tested with `./travis-wait-enhanced --help` or moved to a permanent location.
