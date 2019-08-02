@@ -1,0 +1,35 @@
+language: go
+go:
+  - 1.12.4
+
+env:
+  global:
+    - GO111MODULE=on
+
+before_install:
+  - sudo apt-get update
+
+install:
+  - curl -sL https://git.io/goreleaser | head -n -2 | bash
+  - tar -xf /tmp/goreleaser.tar.gz -C $GOPATH/bin
+  - goreleaser -v
+
+script:
+  - |
+    if [[ -n "$TRAVIS_TAG" ]]; then
+      goreleaser release --skip-publish --rm-dist
+    else
+      goreleaser release --snapshot --rm-dist
+    fi
+
+deploy:
+  provider: releases
+  api_key:
+    secure: gBgSrsmaOt5mQ6sh5pPBPh/r3tnVWYIibzAE7tzYnSS1HyhWMW4mC0nZtUU3CwjLI92w6qHtMYpx2KJXEojX9tuGgpr2iVVPeekCTVVx5J8r43lo/q4l1tu6DShYuJ2w3OdzO8TSrRQ2RhgwCFIpYl3MYr2IGQyISJya/Wm/skWMn/DZjheMZ5K/pielOMN59lMdGRZdJIvTskG/28clMW5Mb6urWNEyYpUxmqJCSAH9N2lds/9FNdEu2LqcAht0+aaf0LwEGjIgvQubZUH34M85d8PnNUh/0bvBmZ8neuCNOLxX4LNxirH+7buCcBX1aSPLZeQ9t6zHJ0BGPm+F2kkDi6ohtfuYBRg1y1roka0LoSIN9x9qzHL2BcIXO1oAPUg9XFDlsvwJHoHJut82eNwesZZfFp+x0cgzyTrXHMqKCDd+bPJHYbLRkkvWcMwgPlfHx8AwlboXbkiA1eRPTINo91ptBh8brw6VPWksMua7m/QoLBqQ/AnPYx5hqEcQbYCaoJJoD52tRKcEHtHxzG+CflfebWDDzFg+bSw/l27PXbheCoPMUw+nJGeqxmkcAFosWuAdmAjjam51jL3YYmkHixT8qvxyFhZ8x2KtE2Q6ruKrQEtKNgTHGvmhoEtXv4FgV4Je6dK7zA+YhpnjDjd1oRNNNpLeQ8R4EDDJzQQ=
+  file_glob: true
+  file:
+    - dist/**/*
+  skip_cleanup: true
+  draft: true
+  on:
+    tags: true
