@@ -63,16 +63,6 @@ To use travis-wait-enhanced in your `.travis.yml` add :
 ```yml
 before_install:
   # linux
-  - curl -sL https://raw.githubusercontent.com/crazy-max/travis-wait-enhanced/master/.travis/linux.sh | head -n -2 | bash
-  # windows
-  - curl -sL https://raw.githubusercontent.com/crazy-max/travis-wait-enhanced/master/.travis/windows.sh | head -n -2 | bash
-```
-
-or
-
-```yml
-before_install:
-  # linux
   - |
     wget -qO- "https://github.com/crazy-max/travis-wait-enhanced/releases/download/v0.1.1/travis-wait-enhanced_0.1.1_linux_x86_64.tar.gz" | tar -zxvf - travis-wait-enhanced
     mv travis-wait-enhanced /home/travis/bin/
