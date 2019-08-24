@@ -26,7 +26,7 @@ Choose the archive matching the destination platform and extract travis-wait-enh
 
 ```
 $ cd /opt
-$ wget -qO- https://github.com/crazy-max/travis-wait-enhanced/releases/download/v0.1.1/travis-wait-enhanced_0.1.1_linux_x86_64.tar.gz | tar -zxvf - travis-wait-enhanced
+$ wget -qO- https://github.com/crazy-max/travis-wait-enhanced/releases/download/v0.2.0/travis-wait-enhanced_0.2.0_linux_x86_64.tar.gz | tar -zxvf - travis-wait-enhanced
 ```
 
 After getting the binary, it can be tested with `./travis-wait-enhanced --help` or moved to a permanent location.
@@ -64,12 +64,12 @@ To use travis-wait-enhanced in your `.travis.yml` add :
 before_install:
   # linux
   - |
-    wget -qO- "https://github.com/crazy-max/travis-wait-enhanced/releases/download/v0.1.1/travis-wait-enhanced_0.1.1_linux_x86_64.tar.gz" | tar -zxvf - travis-wait-enhanced
+    wget -qO- "https://github.com/crazy-max/travis-wait-enhanced/releases/download/v0.2.0/travis-wait-enhanced_0.2.0_linux_x86_64.tar.gz" | tar -zxvf - travis-wait-enhanced
     mv travis-wait-enhanced /home/travis/bin/
     travis-wait-enhanced --version
   # windows
   - |
-    curl -LfsS -o /tmp/travis-wait-enhanced.zip "https://github.com/crazy-max/travis-wait-enhanced/releases/download/v0.1.1/travis-wait-enhanced_0.1.1_windows_x86_64.zip"
+    curl -LfsS -o /tmp/travis-wait-enhanced.zip "https://github.com/crazy-max/travis-wait-enhanced/releases/download/v0.2.0/travis-wait-enhanced_0.2.0_windows_x86_64.zip"
     7z x /tmp/travis-wait-enhanced.zip -y -o/usr/bin/ travis-wait-enhanced.exe -r
     travis-wait-enhanced --version
 ```
