@@ -17,12 +17,11 @@ jobs:
         uses: actions/setup-go@v1
         with:
           go-version: 1.12.4
-        id: go
       -
         name: Set up Goreleaser
         run: |
           curl -sL https://git.io/goreleaser | head -n -2 | bash
-          tar -xf /tmp/goreleaser.tar.gz -C $GOPATH/bin
+          tar -xf /tmp/goreleaser.tar.gz -C /usr/local/bin
           goreleaser -v
       -
         name: Checkout
