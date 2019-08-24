@@ -28,3 +28,13 @@ jobs:
         name: Release
         if: github.event == 'push'
         run: curl -sL https://git.io/goreleaser | bash -s -- release --skip-publish --rm-dist
+      -
+        name: Deploy
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          export TAG_NAME=$(jq --raw-output .ref "$GITHUB_EVENT_PATH")
+          ls -al dist/
+          go get -u github.com/tcnksm/ghr
+          $GOPATH/bin/ghr -n ${TAGNAME} -draft ${TAGNAME} dist/
