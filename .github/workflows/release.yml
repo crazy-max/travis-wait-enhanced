@@ -27,8 +27,9 @@ jobs:
           GHR_VERSION: v0.12.2
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          curl -SLf https://github.com/tcnksm/ghr/releases/download/${GHR_VERSION}/ghr_${GHR_VERSION}_linux_amd64.tar.gz | tar xzC /usr/locl/bin --strip-components=1
           export TAG_NAME=$(jq --raw-output .ref "$GITHUB_EVENT_PATH")
+          echo Tag found: $TAG_NAME
+          curl -SLf https://github.com/tcnksm/ghr/releases/download/${GHR_VERSION}/ghr_${GHR_VERSION}_linux_amd64.tar.gz | tar xzC /tmp --strip-components=1
           ls -al dist/
           go get -u github.com/tcnksm/ghr
-          ghr -n ${TAGNAME} -draft ${TAGNAME} dist/
+          /tmp/ghr -n ${TAGNAME} -draft ${TAGNAME} dist/
