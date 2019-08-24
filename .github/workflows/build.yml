@@ -1,4 +1,4 @@
-name: Snapshot
+name: build
 
 on:
   push:
@@ -6,6 +6,7 @@ on:
       - "*"
     tags:
       - "!*"
+  pull_request:
 
 jobs:
   build:
