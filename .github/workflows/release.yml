@@ -1,12 +1,9 @@
 name: Release
 
 on:
-  pull_request:
-    branches:
-      - master
-  push:
-    branches:
-      - master
+  create:
+    tags:
+      - v*.*.*
 
 jobs:
   build:
@@ -21,12 +18,7 @@ jobs:
         name: Checkout
         uses: actions/checkout@v1
       -
-        name: Snapshot
-        if: github.event != 'push'
-        run: curl -sL https://git.io/goreleaser | bash -s -- release --snapshot --rm-dist
-      -
-        name: Release
-        if: github.event == 'push'
+        name: Build
         run: curl -sL https://git.io/goreleaser | bash -s -- release --skip-publish --rm-dist
       -
         name: Deploy
@@ -35,7 +27,6 @@ jobs:
           GHR_VERSION: v0.12.2
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          set PATH
           curl -SLf https://github.com/tcnksm/ghr/releases/download/${GHR_VERSION}/ghr_${GHR_VERSION}_linux_amd64.tar.gz | tar xzC /tmp --strip-components=1
           export TAG_NAME=$(jq --raw-output .ref "$GITHUB_EVENT_PATH")
           ls -al dist/
