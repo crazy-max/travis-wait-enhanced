@@ -1,9 +1,11 @@
 name: Release
 
 on:
-  create:
+  push:
+    branches:
+      - "!*"
     tags:
-      - v*.*.*
+      - "v*.*.*"
 
 jobs:
   build:
