@@ -13,13 +13,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      -
         name: Set up Go
         uses: actions/setup-go@v1
         with:
           go-version: 1.12.4
       -
+        name: Set GOPATH
+        # temporary fix (see https://github.com/actions/setup-go/issues/14)
+        run: |
+          echo "##[set-env name=GOPATH;]$(dirname $GITHUB_WORKSPACE)"
+          echo "##[add-path]$(dirname $GITHUB_WORKSPACE)/bin"
+        shell: bash
+      -
         name: Checkout
         uses: actions/checkout@v1
       -
         name: Build
-        run: curl -sL https://git.io/goreleaser | bash -s -- release --snapshot --rm-dist
+        run: |
+          curl -sL https://git.io/goreleaser | bash -s -- release --snapshot --rm-dist

@@ -4,8 +4,8 @@
   <a href="https://github.com/crazy-max/travis-wait-enhanced/actions"><img src="https://github.com/crazy-max/travis-wait-enhanced/workflows/build/badge.svg" alt="Build Status"></a>
   <a href="https://goreportcard.com/report/github.com/crazy-max/travis-wait-enhanced"><img src="https://goreportcard.com/badge/github.com/crazy-max/travis-wait-enhanced?style=flat-square" alt="Go Report"></a>
   <a href="https://www.codacy.com/app/crazy-max/travis-wait-enhanced"><img src="https://img.shields.io/codacy/grade/2a33c37cd24e4225adacd48736c0efbb.svg?style=flat-square" alt="Code Quality"></a>
-  <br /><a href="https://www.patreon.com/crazymax"><img src="https://img.shields.io/badge/donate-patreon-fb664e.svg?style=flat-square" alt="Support me on Patreon"></a>
-  <a href="https://www.paypal.me/crazyws"><img src="https://img.shields.io/badge/donate-paypal-7057ff.svg?style=flat-square" alt="Donate Paypal"></a>
+  <br /><a href="https://www.patreon.com/crazymax"><img src="https://img.shields.io/badge/donate-patreon-f96854.svg?logo=patreon&style=flat-square" alt="Support me on Patreon"></a>
+  <a href="https://www.paypal.me/crazyws"><img src="https://img.shields.io/badge/donate-paypal-00457c.svg?logo=paypal&style=flat-square" alt="Donate Paypal"></a>
 </p>
 
 ## About

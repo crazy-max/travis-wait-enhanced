@@ -8,14 +8,30 @@ on:
       - "v*.*.*"
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     steps:
+      -
+        name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      -
+        name: Set TAG_NAME
+        run: |
+          echo "##[set-env name=TAG_NAME;]$(cat $GITHUB_EVENT_PATH | jq -r .ref | awk -F '/' '{print $3}')"
       -
         name: Set up Go
         uses: actions/setup-go@v1
         with:
           go-version: 1.12.4
+      -
+        name: Set GOPATH
+        # temporary fix (see https://github.com/actions/setup-go/issues/14)
+        run: |
+          echo "##[set-env name=GOPATH;]$(dirname $GITHUB_WORKSPACE)"
+          echo "##[add-path]$(dirname $GITHUB_WORKSPACE)/bin"
+        shell: bash
       -
         name: Checkout
         uses: actions/checkout@v1
@@ -29,10 +45,8 @@ jobs:
         name: Deploy
         if: success()
         env:
-          GHR_VERSION: v0.12.2
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          export TAG_NAME=$(jq --raw-output .ref "$GITHUB_EVENT_PATH")
-          echo TAG_NAME=$TAG_NAME
-          curl -SLf https://github.com/tcnksm/ghr/releases/download/${GHR_VERSION}/ghr_${GHR_VERSION}_linux_amd64.tar.gz | tar xzC /tmp --strip-components=1
-          /tmp/ghr -n ${TAG_NAME} -draft ${TAG_NAME} dist/
+          go get -u github.com/tcnksm/ghr
+          ghr --version
+          ghr -n ${TAG_NAME} -draft ${TAG_NAME} dist/
