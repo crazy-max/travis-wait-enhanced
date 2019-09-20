@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1 (2019/09/20)
+
+* Use softprops/action-gh-release to create GitHub release
+* Use [ghaction-goreleaser](https://github.com/crazy-max/ghaction-goreleaser)
+
 ## 0.2.0 (2019/08/24)
 
 * Switch to GitHub Actions
