@@ -57,6 +57,14 @@ Args:
 * `--version` : Show version and exit. _Optional_.
 * `--timeout <duration>` : Timeout for this command. _Optional_. (default: `20m`).
 * `--interval <duration>` : Interval at which to print keep-alive messages. _Optional_. (default: `1m`).
+* `<command>` : The command to run.
+
+If your command contains flags (e.g. `mvn -V install -Pmy-profile`) then use `--` to indicate the end of
+the travis-wait-enhanced flags to avoid parsing errors. For example
+
+```
+    travis-wait-enhanced --interval=1m --timeout=20m -- mvn -V clean install -Prun-its
+```
 
 To use travis-wait-enhanced in your `.travis.yml` add :
 
