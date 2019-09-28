@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2 (2019/09/28)
+
+* Use GOPROXY
+* Go 1.12.10
+* Move to [GoReleaser Action](https://github.com/goreleaser/goreleaser-action)
+
 ## 0.2.1 (2019/09/20)
 
 * Use softprops/action-gh-release to create GitHub release
