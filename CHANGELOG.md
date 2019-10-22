@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0 (2019/10/22)
+
+* Add output formatting options (#6)
+* Update libs
+
 ## 0.2.2 (2019/09/28)
 
 * Use GOPROXY
