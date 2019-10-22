@@ -69,13 +69,13 @@ func main() {
 	go func() {
 		for t := range ticker.C {
 			if printTimestamp {
-				io.WriteString(os.Stdout, fmt.Sprintf("%s %s", baseString, t.Format(time.RFC1123)))
+				_, _ = io.WriteString(os.Stdout, fmt.Sprintf("%s %s", baseString, t.Format(time.RFC1123)))
 			} else {
-				io.WriteString(os.Stdout, baseString)
+				_, _ = io.WriteString(os.Stdout, baseString)
 			}
 
 			if printNewline {
-				io.WriteString(os.Stdout, "\n")
+				_, _ = io.WriteString(os.Stdout, "\n")
 			}
 		}
 	}()
