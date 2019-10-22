@@ -16,6 +16,7 @@
 
 * Custom timeout duration
 * Custom interval duration at which to print keep-alive messages
+* Custom formatting options
 * Print command output to stdout/stderr
 
 ## Download
@@ -39,11 +40,17 @@ Prevent Travis CI from thinking a long-running process has stalled. More info:
 https://github.com/crazy-max/travis-wait-enhanced
 
 Flags:
-  --help         Show context-sensitive help (also try --help-long and
-                 --help-man).
-  --timeout=20m  Timeout for this command.
-  --interval=1m  Interval at which to print keep-alive messages.
-  --version      Show application version.
+  --help             Show context-sensitive help (also try --help-long and
+                     --help-man).
+  --timeout=20m      Timeout for this command.
+  --interval=1m      Interval at which to print keep-alive messages.
+  --print-name       Print the name of this tool to identify keep-alive
+                     messages.
+  --print-string="Still running..."
+                     Keep-alive message printed in each interval.
+  --print-timestamp  Print the current timestamp after each keep-alive message.
+  --print-newline    Print a newline character after each keep-alive message.
+  --version          Show application version.
 
 Args:
   <command>  Command to execute.
@@ -53,17 +60,11 @@ Args:
 
 `travis-wait-enhanced [<flags>] <command>`
 
-* `--help` : Show help text and exit. _Optional_.
-* `--version` : Show version and exit. _Optional_.
-* `--timeout <duration>` : Timeout for this command. _Optional_. (default: `20m`).
-* `--interval <duration>` : Interval at which to print keep-alive messages. _Optional_. (default: `1m`).
-* `<command>` : The command to run.
-
 If your command contains flags (e.g. `mvn -V install -Pmy-profile`) then use `--` to indicate the end of
 the travis-wait-enhanced flags to avoid parsing errors. For example
 
 ```
-    travis-wait-enhanced --interval=1m --timeout=20m -- mvn -V clean install -Prun-its
+travis-wait-enhanced --interval=1m --timeout=20m -- mvn -V clean install -Prun-its
 ```
 
 To use travis-wait-enhanced in your `.travis.yml` add :
