@@ -61,17 +61,17 @@ func main() {
 
 	// Start
 	ticker := time.NewTicker(interval)
-	base_string := printString
+	baseString := printString
 	if printName {
-		base_string = kingpin.CommandLine.Name + " " + base_string
+		baseString = kingpin.CommandLine.Name + " " + baseString
 	}
 
 	go func() {
 		for t := range ticker.C {
 			if printTimestamp {
-				io.WriteString(os.Stdout, fmt.Sprintf("%s %s", base_string, t.Format(time.RFC1123)))
+				io.WriteString(os.Stdout, fmt.Sprintf("%s %s", baseString, t.Format(time.RFC1123)))
 			} else {
-				io.WriteString(os.Stdout, base_string)
+				io.WriteString(os.Stdout, baseString)
 			}
 
 			if printNewline {
