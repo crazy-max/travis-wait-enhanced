@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"fmt"
+	"io"
 	"os"
 	"os/exec"
 	"os/signal"
@@ -14,16 +16,24 @@ import (
 )
 
 var (
-	version  = "dev"
-	timeout  time.Duration
-	interval time.Duration
-	fullcmd  []string
+	version        = "dev"
+	timeout        time.Duration
+	interval       time.Duration
+	printName      bool
+	printString    string
+	printTimestamp bool
+	printNewline   bool
+	fullcmd        []string
 )
 
 func main() {
 	// Parse command line
 	kingpin.Flag("timeout", "Timeout for this command.").Default("20m").DurationVar(&timeout)
 	kingpin.Flag("interval", "Interval at which to print keep-alive messages.").Default("1m").DurationVar(&interval)
+	kingpin.Flag("print-name", "Print the name of this tool to identify keep-alive messages.").Default("true").BoolVar(&printName)
+	kingpin.Flag("print-string", "Keep-alive message printed in each interval.").Default("Still running...").StringVar(&printString)
+	kingpin.Flag("print-timestamp", "Print the current timestamp after each keep-alive message.").Default("true").BoolVar(&printTimestamp)
+	kingpin.Flag("print-newline", "Print a newline character after each keep-alive message.").Default("true").BoolVar(&printNewline)
 	kingpin.Arg("command", "Command to execute.").Required().StringsVar(&fullcmd)
 	kingpin.UsageTemplate(kingpin.CompactUsageTemplate).Version(version).Author("CrazyMax")
 	kingpin.CommandLine.Name = "travis-wait-enhanced"
@@ -51,9 +61,22 @@ func main() {
 
 	// Start
 	ticker := time.NewTicker(interval)
+	baseString := printString
+	if printName {
+		baseString = kingpin.CommandLine.Name + " " + baseString
+	}
+
 	go func() {
 		for t := range ticker.C {
-			log.Info().Msgf("Still running at %s...", t.Format(time.RFC1123))
+			if printTimestamp {
+				io.WriteString(os.Stdout, fmt.Sprintf("%s %s", baseString, t.Format(time.RFC1123)))
+			} else {
+				io.WriteString(os.Stdout, baseString)
+			}
+
+			if printNewline {
+				io.WriteString(os.Stdout, "\n")
+			}
 		}
 	}()
 	defer ticker.Stop()
