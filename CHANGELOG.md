@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0 (2019/12/05)
+
+* Go 1.13.5
+
 ## 1.0.0 (2019/10/22)
 
 * Add output formatting options (#6)
