@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://github.com/crazy-max/travis-wait-enhanced/releases/latest"><img src="https://img.shields.io/github/release/crazy-max/travis-wait-enhanced.svg?style=flat-square" alt="GitHub release"></a>
   <a href="https://github.com/crazy-max/travis-wait-enhanced/releases/latest"><img src="https://img.shields.io/github/downloads/crazy-max/travis-wait-enhanced/total.svg?style=flat-square" alt="Total downloads"></a>
-  <a href="https://github.com/crazy-max/travis-wait-enhanced/actions"><img src="https://github.com/crazy-max/travis-wait-enhanced/workflows/build/badge.svg" alt="Build Status"></a>
+  <a href="https://github.com/crazy-max/travis-wait-enhanced/actions?workflow=build"><img src="https://img.shields.io/github/workflow/status/crazy-max/travis-wait-enhanced/build?label=build&logo=github&style=flat-square" alt="Build Status"></a>
   <a href="https://goreportcard.com/report/github.com/crazy-max/travis-wait-enhanced"><img src="https://goreportcard.com/badge/github.com/crazy-max/travis-wait-enhanced?style=flat-square" alt="Go Report"></a>
   <a href="https://www.codacy.com/app/crazy-max/travis-wait-enhanced"><img src="https://img.shields.io/codacy/grade/2a33c37cd24e4225adacd48736c0efbb.svg?style=flat-square" alt="Code Quality"></a>
   <br /><a href="https://github.com/sponsors/crazy-max"><img src="https://img.shields.io/badge/sponsor-crazy--max-181717.svg?logo=github&style=flat-square" alt="Become a sponsor"></a>
@@ -34,26 +34,24 @@ After getting the binary, it can be tested with `./travis-wait-enhanced --help` 
 
 ```
 $ ./travis-wait-enhanced --help
-usage: travis-wait-enhanced [<flags>] <command>...
+Usage: travis-wait-enhanced <command> ...
 
 Prevent Travis CI from thinking a long-running process has stalled. More info:
 https://github.com/crazy-max/travis-wait-enhanced
 
-Flags:
-  --help             Show context-sensitive help (also try --help-long and
-                     --help-man).
-  --timeout=20m      Timeout for this command.
-  --interval=1m      Interval at which to print keep-alive messages.
-  --print-name       Print the name of this tool to identify keep-alive
-                     messages.
-  --print-string="Still running..."
-                     Keep-alive message printed in each interval.
-  --print-timestamp  Print the current timestamp after each keep-alive message.
-  --print-newline    Print a newline character after each keep-alive message.
-  --version          Show application version.
+Arguments:
+  <command> ...    Command to execute.
 
-Args:
-  <command>  Command to execute.
+Flags:
+  --help               Show context-sensitive help.
+  --version
+  --timeout=20m        Timeout for this command.
+  --interval=1m        Interval at which to print keep-alive messages.
+  --print-name         Print the name of this tool to identify keep-alive messages.
+  --print-string="Still running..."
+                       Keep-alive message printed in each interval.
+  --print-timestamp    Print the current timestamp after each keep-alive message.
+  --print-newline      Print a newline character after each keep-alive message.
 ```
 
 ## Usage
@@ -83,7 +81,7 @@ before_install:
     travis-wait-enhanced --version
 ```
 
-## How can I help ?
+## How can I help?
 
 All kinds of contributions are welcome :raised_hands:! The most basic way to show your support is to star :star2: the project, or to raise issues :speech_balloon: You can also support this project by [**becoming a sponsor on GitHub**](https://github.com/sponsors/crazy-max) :clap: or by making a [Paypal donation](https://www.paypal.me/crazyws) to ensure this journey continues indefinitely! :rocket:
 
