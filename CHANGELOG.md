@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.0 (2020/05/20)
+
+* Switch to kong command-line parser
+* Update deps
+
 ## 1.1.0 (2019/12/05)
 
 * Go 1.13.5
