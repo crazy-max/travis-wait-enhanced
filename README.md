@@ -8,9 +8,18 @@
   <a href="https://www.paypal.me/crazyws"><img src="https://img.shields.io/badge/donate-paypal-00457c.svg?logo=paypal&style=flat-square" alt="Donate Paypal"></a>
 </p>
 
+## :warning: Abandoned project
+
+This project is not maintained anymore and is abandoned. Feel free to fork and make your own changes if needed.
+
+Thanks to everyone for their valuable feedback and contributions.
+
 ## About
 
-**travis-wait-enhanced** :alarm_clock: is a CLI application written in [Go](https://golang.org/) to replace the existing [travis_wait](https://docs.travis-ci.com/user/common-build-problems/#build-times-out-because-no-output-was-received) bash function (with some enhancements) to prevent [Travis CI](https://travis-ci.com/) from thinking a long-running process has stalled.
+**travis-wait-enhanced** :alarm_clock: is a CLI application written in [Go](https://golang.org/) to replace the
+existing [travis_wait](https://docs.travis-ci.com/user/common-build-problems/#build-times-out-because-no-output-was-received)
+bash function (with some enhancements) to prevent [Travis CI](https://travis-ci.com/) from thinking a long-running
+process has stalled.
 
 ## Features
 
@@ -21,7 +30,8 @@
 
 ## Download
 
-travis-wait-enhanced binaries are available in [releases](https://github.com/crazy-max/travis-wait-enhanced/releases) page.
+travis-wait-enhanced binaries are available in [releases](https://github.com/crazy-max/travis-wait-enhanced/releases)
+page.
 
 Choose the archive matching the destination platform and extract travis-wait-enhanced:
 
@@ -83,7 +93,10 @@ before_install:
 
 ## How can I help?
 
-All kinds of contributions are welcome :raised_hands:! The most basic way to show your support is to star :star2: the project, or to raise issues :speech_balloon: You can also support this project by [**becoming a sponsor on GitHub**](https://github.com/sponsors/crazy-max) :clap: or by making a [Paypal donation](https://www.paypal.me/crazyws) to ensure this journey continues indefinitely! :rocket:
+All kinds of contributions are welcome :raised_hands:! The most basic way to show your support is to star :star2:
+the project, or to raise issues :speech_balloon: You can also support this project by
+[**becoming a sponsor on GitHub**](https://github.com/sponsors/crazy-max) :clap: or by making a
+[Paypal donation](https://www.paypal.me/crazyws) to ensure this journey continues indefinitely! :rocket:
 
 Thanks again for your support, it is much appreciated! :pray:
 
